@@ -19,4 +19,8 @@ public class Paddle extends Sprite {
            setInitialPosition(xPos, panelHeight / 2 - (getHeight() / 2));
            resetToInitialPosition();
        }
+       
+       public static int getDistanceFromEdge() {		//Allowing DISTANCE_FROM_EDGE to be externally visible so that paddle is always
+    	   return DISTANCE_FROM_EDGE;					// offset from window edge when window is re-sized.
+       }
 }

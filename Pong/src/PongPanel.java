@@ -15,8 +15,8 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 
        private final static Color BACKGROUND_COLOUR = Color.DARK_GRAY;
        private final static int TIMER_DELAY = 5;
-       private final static int BALL_MOVEMENT_SPEED = 3;
-       private final static int POINTS_TO_WIN = 3;
+       private final static int BALL_MOVEMENT_SPEED = 4;
+       private final static int POINTS_TO_WIN = 5;
        private final static int SCORE_TEXT_X = 100;
        private final static int SCORE_TEXT_Y = 100;
        private final static int SCORE_FONT_SIZE = 50;
@@ -62,16 +62,19 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
               }
 
               case PLAYING: {
+            	  paddle2.setxPosition((getWidth()- Paddle.getDistanceFromEdge())); // Reset position of left hand paddle if panel width changes
             	  moveObject(paddle1);
             	  moveObject(paddle2);
-                  moveObject(ball);             // Move ball
-                  checkWallBounce();            // Check for wall bounce
+                  moveObject(ball);             									// Move ball
+                  checkWallBounce();            									// Check for wall bounce
                   checkPaddleBounce();
                   checkWin();
                   break;
               }
 
               case GAMEOVER: {
+            	  paddle2.setxPosition((getWidth()- Paddle.getDistanceFromEdge())); // Reset position of left hand paddle if panel width changes
+            	  ball.setxPosition((getWidth() / 2) - (Ball.getBallWidth() /2));; 	// Force ball to be in center of screen if panel width changes
                   break;
               }
           }
@@ -91,17 +94,17 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
            g.fillRect(sprite.getxPosition(), sprite.getyPosition(), sprite.getWidth(), sprite.getHeight());
        }
 
-       @Override
-       public void keyPressed(KeyEvent event) {
+       @Override												//Paddle speed/responsiveness controlled by setyVelocity(x)
+       public void keyPressed(KeyEvent event) {					//Increased to 4 to make game more playable.
            if(event.getKeyCode() == KeyEvent.VK_W) {
-               paddle1.setyVelocity(-1);
+               paddle1.setyVelocity(-4);
            } else if(event.getKeyCode() == KeyEvent.VK_S) {
-               paddle1.setyVelocity(1);
+               paddle1.setyVelocity(4);
            }
            if(event.getKeyCode() == KeyEvent.VK_UP) {
-               paddle2.setyVelocity(-1);
+               paddle2.setyVelocity(-4);
            } else if(event.getKeyCode() == KeyEvent.VK_DOWN) {
-               paddle2.setyVelocity(1);
+               paddle2.setyVelocity(4);
            }
        }
 
