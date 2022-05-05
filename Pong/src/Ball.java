@@ -4,7 +4,7 @@ import java.awt.Color;
 
        private static final int BALL_WIDTH = 25;
        private static final int BALL_HEIGHT = 25;
-       private static final Color BALL_COLOUR = Color.WHITE;
+       private static final Color BALL_COLOUR = Color.YELLOW;
 
        public Ball(int panelWidth, int panelHeight) {
           setWidth(BALL_WIDTH);
